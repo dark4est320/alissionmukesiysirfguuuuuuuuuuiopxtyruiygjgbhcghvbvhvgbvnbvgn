@@ -457,6 +457,30 @@ recentInputs.forEach(input => {
 });
 
 </script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let balance = localStorage.getItem("balance") || 40584912.86; // Default balance
+        balance = parseFloat(balance); 
+
+        document.getElementById('fund-btn').addEventListener('click', function () {
+            let amount = parseFloat(document.getElementById("fund-value").value);
+
+            if (isNaN(amount) || amount <= 0 || amount > balance) {
+                alert("Invalid amount. Please enter a valid amount within your balance.");
+                return;
+            }
+
+            setTimeout(() => {
+                // Deduct balance
+                balance -= amount;
+                localStorage.setItem("balance", balance.toFixed(2));
+
+                // Update success message
+                document.getElementById("send-val").innerText = amount.toFixed(2);
+            }, 2000); 
+        });
+    });
+</script>
 
 
 
