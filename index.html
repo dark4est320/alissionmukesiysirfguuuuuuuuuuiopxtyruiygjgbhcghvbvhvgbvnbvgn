@@ -119,5 +119,11 @@
 </div>
 
     </main>
+               <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let balance = localStorage.getItem("balance") || 40584912.86;
+            document.getElementById("balance-display").innerText = `$${parseFloat(balance).toFixed(2)} USD`;
+        });
+    </script>
 </body>
 </html>
